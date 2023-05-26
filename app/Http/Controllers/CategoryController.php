@@ -8,5 +8,12 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function index()
 
+    {
+        $category = Category::find(1);
+//        $childCategories = CategoryChild::all();
+
+        dd($category->childCategories);
+    }
 }
