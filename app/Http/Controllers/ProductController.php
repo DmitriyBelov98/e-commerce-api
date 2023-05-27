@@ -14,10 +14,20 @@ class ProductController extends Controller
     {
 
 
+        $products = QueryBuilder::for(Product::class)
+            ->allowedFilters(
+                [
 
+                    'name' ,
+                    'slug' ,
+                    'price'
 
+                ] ,
+
+            )
+            ->get();
         return ProductResource::collection(
-            Product::all()
+            $products
         );
 
 
