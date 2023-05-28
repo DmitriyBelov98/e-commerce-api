@@ -22,7 +22,7 @@ class ProductResource extends JsonResource
             'slug' => $this->slug,
             'price' => $this->price,
             'description' => $this->description,
-//            'categories' => CategoryProductResourse::collection($this->categories),
+            'variations' => VariationResource::collection($this->variations),
         ];
     }
 }
