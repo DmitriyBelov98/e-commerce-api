@@ -19,4 +19,9 @@ class Category extends Model
     {
         $builder->whereNull('parent_id');
     }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
+    }
 }
