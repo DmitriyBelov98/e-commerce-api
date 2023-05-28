@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('variations', function (Blueprint $table) {
+        Schema::create('product_variations', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->unsignedBigInteger('product_id')->index();
-            $table->unsignedBigInteger('order')->nullable();
+            $table->string('name');
+            $table->integer('order');
+
+
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products');
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('variations');
+        Schema::dropIfExists('product_variations');
     }
 };
