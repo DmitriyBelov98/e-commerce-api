@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "23fae1cc-9d02-4ca7-9634-a175369c8b65",
+		"name": "e-commerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27619575"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"alejandra21@example.org\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/login",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"MyName\",\r\n    \"email\": \"test@tt.com\",\r\n    \"password\": \"123456\",\r\n    \"password_confirmation\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/register",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Auth",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 1|pQzqOxzZwaEG8zL3i9cVCXvysNeyUAJnPDkQ3ewY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/user",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "AllProducts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/products/",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SingleProduct",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/products/notebook",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"products",
+								"notebook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FilteredProduct",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/products/notebook?filter[category]=category1",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"products",
+								"notebook"
+							],
+							"query": [
+								{
+									"key": "filter[category]",
+									"value": "category1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "carts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 4|Faiq8tYTRWCbf2CL4K25wnvrLBr4IwLVUt5y7t2V",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/cart",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{DOMAIN}}/categories",
+					"host": [
+						"{{DOMAIN}}"
+					],
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
