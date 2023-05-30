@@ -3,13 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CartStoreRequest;
+use App\Http\Requests\CartUpdateRequest;
 use App\Models\Product;
 use App\Models\ProductVariation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
+
+    
 {
+    public function index()
+    {
+        
+    }
     public function store(CartStoreRequest $request)
     {
 
@@ -22,7 +29,7 @@ class CartController extends Controller
 
 
                 return [
-                    'quantity' => $product['quantity'] + $this->test($request, $product['id'])
+                    'quantity' => $product['quantity'] + $this->updateQuantityForStoreItems($request, $product['id'])
                 ];
 
 
@@ -32,11 +39,24 @@ class CartController extends Controller
         $request->user()->cart()->syncWithoutDetaching($products);
     }
 
-    public function test(CartStoreRequest $request, $productId)
+    public function updateQuantityForStoreItems(CartStoreRequest $request, $productId)
     {
-        if ($product = $request->user()->cart()->where('product_variation_id', $productId)->first()) {
+        if ($product = $request->user()->fresh()->cart()->where('product_variation_id', $productId)->first()) {
             return $product->pivot->quantity;
         }
         return 0;
     }
+    public function updateQuantityForUpdateCartMethod( $productId, $quantity, Request $request)
+    {
+       $request->user()->cart()->updateExistingPivot($productId, [
+           'quantity' => $quantity
+       ]);
+    }
+
+    public function update(ProductVariation $productVariation, CartUpdateRequest $request)
+    {
+       $this->updateQuantityForUpdateCartMethod($productVariation->id, $request->quantity, $request);
+    }
+
+
 }

@@ -24,8 +24,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::middleware('auth:sanctum')->group(function () {
-    Route::apiResource('cart', CartController::class)->only([
-        'index', 'store'
+    Route::apiResource('cart', CartController::class, [
+        'parameters' => [
+            'cart' => 'productVariation'
+        ]
     ]);
 
 });
