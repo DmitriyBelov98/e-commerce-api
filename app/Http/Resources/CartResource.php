@@ -2,12 +2,11 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Product;
-use App\Models\ProductVariationType;
+use App\Models\ProductVariation;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ProductVariations extends JsonResource
+class CartResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,12 +15,8 @@ class ProductVariations extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $product = Product::find($this->id);
         return [
-            'id' => $this->id ,
-            'name' => $this->name ,
-
-
+            'products' => ProductVariations::collection($this->cart)
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CartStoreRequest;
 use App\Http\Requests\CartUpdateRequest;
+use App\Http\Resources\CartResource;
 use App\Models\Product;
 use App\Models\ProductVariation;
 use Illuminate\Http\Request;
@@ -11,11 +12,11 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 
-    
+
 {
-    public function index()
+    public function index(Request $request)
     {
-        
+        return new CartResource($request->user());
     }
     public function store(CartStoreRequest $request)
     {
