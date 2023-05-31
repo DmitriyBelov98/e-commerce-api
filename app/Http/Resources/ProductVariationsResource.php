@@ -7,7 +7,7 @@ use App\Models\ProductVariationType;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ProductVariations extends JsonResource
+class ProductVariationsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,11 +16,9 @@ class ProductVariations extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $product = Product::find($this->id);
         return [
             'id' => $this->id ,
-            'name' => $this->name ,
-
+            'type' => $this->name ,
 
         ];
     }
