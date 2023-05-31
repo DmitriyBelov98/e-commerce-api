@@ -49,7 +49,6 @@ class User extends Authenticatable
             ->withPivot('quantity')
             ->withTimestamps();
 
-
     }
 
 

@@ -26,6 +26,7 @@ class CartStoreRequest extends FormRequest
             'products' => 'required|array',
             'products.*.id' =>'required|exists:product_variations,id',
             'products.*.quantity' => 'numeric|min:1'
+
         ];
     }
 }
