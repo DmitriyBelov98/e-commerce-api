@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CartStoreRequest;
 use App\Http\Requests\CartUpdateRequest;
 use App\Http\Resources\CartResource;
-use App\Models\Cart;
 use App\Models\Product;
 use App\Models\ProductVariation;
 use Illuminate\Http\Request;
