@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
@@ -29,6 +30,8 @@ Route::middleware('auth:sanctum')->group(function () {
             'cart' => 'productVariation'
         ]
     ]);
+
+    Route::apiResource('address', AddressController::class);
 
 });
 
