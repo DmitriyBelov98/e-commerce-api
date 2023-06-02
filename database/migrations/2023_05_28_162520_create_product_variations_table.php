@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('product_id')->index();
             $table->string('name');
-            $table->integer('order');
+            $table->integer('order')->nullable();
 
 
 

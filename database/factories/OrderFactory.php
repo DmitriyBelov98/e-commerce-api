@@ -7,9 +7,9 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<Address>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Order>
  */
-class AddressFactory extends Factory
+class OrderFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,11 +20,7 @@ class AddressFactory extends Factory
     {
         return [
             'user_id' => self::factoryForModel(User::class)->create()->id,
-            'user_name' => $this->faker->name,
-            'address' => $this->faker->streetAddress,
-            'city' => $this->faker->city,
-            'postal_code' => $this->faker->postcode,
-
+            'address_id' => self::factoryForModel(Address::class)->create()->id
         ];
     }
 }
