@@ -3,7 +3,8 @@
 		"_postman_id": "23fae1cc-9d02-4ca7-9634-a175369c8b65",
 		"name": "e-commerce",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "27619575"
+		"_exporter_id": "27619575",
+		"_collection_link": "https://red-rocket-930507.postman.co/workspace/Team-Workspace~440819e7-7e46-4ba6-8fc3-c93568f751b2/collection/27619575-23fae1cc-9d02-4ca7-9634-a175369c8b65?action=share&creator=27619575&source=collection_link"
 	},
 	"item": [
 		{
@@ -16,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"alejandra21@example.org\",\r\n    \"password\": \"password\"\r\n}",
+							"raw": "{\r\n    \"email\": \"breitenberg.jaycee@example.com\",\r\n    \"password\": \"password\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -48,7 +49,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"MyName\",\r\n    \"email\": \"test@tt.com\",\r\n    \"password\": \"123456\",\r\n    \"password_confirmation\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Dima\",\r\n    \"email\": \"test@tt.com\",\r\n    \"password\": \"123456\",\r\n    \"password_confirmation\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -84,7 +85,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer 1|pQzqOxzZwaEG8zL3i9cVCXvysNeyUAJnPDkQ3ewY",
+								"value": "Bearer 1|0YecN3tUlgIQuQE6hpdwQVcJnKTU3KUKQcHU4b1Z",
 								"type": "text"
 							}
 						],
@@ -127,15 +128,21 @@
 					"name": "SingleProduct",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{DOMAIN}}/products/notebook",
+							"raw": "{{DOMAIN}}/products/ratione",
 							"host": [
 								"{{DOMAIN}}"
 							],
 							"path": [
 								"products",
-								"notebook"
+								"ratione"
 							]
 						}
 					},
@@ -145,20 +152,26 @@
 					"name": "FilteredProduct",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{DOMAIN}}/products/notebook?filter[category]=category1",
+							"raw": "{{DOMAIN}}/products/est?filter[category]=eum",
 							"host": [
 								"{{DOMAIN}}"
 							],
 							"path": [
 								"products",
-								"notebook"
+								"est"
 							],
 							"query": [
 								{
 									"key": "filter[category]",
-									"value": "category1"
+									"value": "eum"
 								}
 							]
 						}
@@ -171,9 +184,9 @@
 			"name": "Cart",
 			"item": [
 				{
-					"name": "carts",
+					"name": "AddProductsToCart",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
@@ -182,10 +195,19 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer 4|Faiq8tYTRWCbf2CL4K25wnvrLBr4IwLVUt5y7t2V",
+								"value": "Bearer 1|HJCK5QNYlwrZ2dfUZKw90CcaRGe7q51pe11WGYSH",
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"products\": [{\r\n    \"id\": 1, \r\n     \"quantity\": 11\r\n    },\r\n    {\r\n    \"id\": 2, \r\n     \"quantity\": 10\r\n    }\r\n    ]\r\n     \r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{DOMAIN}}/cart",
 							"host": [
@@ -197,25 +219,289 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "GetAllUserCartProducts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 1|HJCK5QNYlwrZ2dfUZKw90CcaRGe7q51pe11WGYSH",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/cart/",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"cart",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCart",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 1|HJCK5QNYlwrZ2dfUZKw90CcaRGe7q51pe11WGYSH",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "quantity",
+									"value": "20",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/cart/1",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"cart",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCart",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 1|HJCK5QNYlwrZ2dfUZKw90CcaRGe7q51pe11WGYSH",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "quantity",
+									"value": "20",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/cart/1",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"cart",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Addresses",
+			"item": [
+				{
+					"name": "GetUserAddress",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 1|HJCK5QNYlwrZ2dfUZKw90CcaRGe7q51pe11WGYSH",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/address",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddUserAddress",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 1|0YecN3tUlgIQuQE6hpdwQVcJnKTU3KUKQcHU4b1Z",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user_name",
+									"value": "Kekk",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "test1",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "Almaty",
+									"type": "text"
+								},
+								{
+									"key": "postal_code",
+									"value": "sdfdt",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/address",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"address"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "CreateOrder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 1|HJCK5QNYlwrZ2dfUZKw90CcaRGe7q51pe11WGYSH",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "address_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/order",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserOrder",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 1|HJCK5QNYlwrZ2dfUZKw90CcaRGe7q51pe11WGYSH",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "address_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/order",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
 		{
 			"name": "Categories",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{DOMAIN}}/categories",
-					"host": [
-						"{{DOMAIN}}"
-					],
-					"path": [
-						"categories"
-					]
+			"item": [
+				{
+					"name": "Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/categories/",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }
