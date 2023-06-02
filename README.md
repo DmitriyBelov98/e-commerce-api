@@ -21,8 +21,10 @@
 - Mysql используется в качестве базы данных для этого приложения.
 
 ## документация по API:
-Все конечные точки API и документацию можно найти по адресу:
+Все конечные точки API по адресу:
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/27619575-23fae1cc-9d02-4ca7-9634-a175369c8b65?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D27619575-23fae1cc-9d02-4ca7-9634-a175369c8b65%26entityType%3Dcollection%26workspaceId%3D440819e7-7e46-4ba6-8fc3-c93568f751b2)
+
+Также коллекция выгружена в проект.
 
 Ниже приведен простой список конечных точек API.
 >POST /api/signup/ - регистрация
