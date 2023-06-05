@@ -40,6 +40,8 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
+
+        $product->load(['variations.type']);
         return new ProductResource($product);
     }
 }
